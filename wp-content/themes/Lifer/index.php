@@ -5,6 +5,7 @@ if (have_posts()) :
         ?>
         <h2><a href=<?php echo the_permalink(); ?>><?php the_title(); ?></a></h2>
         <em>Published on <?php the_time(); ?> by <?php the_author(); ?></em>
+        <li class="icon-date"><?php echo get_the_date( 'Y-m-d' ); ?></li>
         <?php the_content(); ?>
         <?php comments_template(); ?>
         <?php

@@ -1,8 +1,9 @@
 <?php get_header(); ?>
+<?php $published_posts = wp_count_posts()->publish; // gets the total posts for challenge #??> 
 
     <section id="header">
         <div id="header-img">
-            <img class="ps-4 pt-4" src="<?php echo get_template_directory_uri(); ?>/assets/img/thema.png" alt="logo" height="80px">
+            <img class="ps-4 pt-3" src="<?php echo get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px">
             <div class="container h-100">
                 <!-- hamburger menu -->
                 <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -24,14 +25,33 @@
     </section>                                        
                                 
     <section id="challenge">
-        <div class="py-5">
+        <div class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 text-center">
-                        <p class="">challenge #31</p>
-                        <?php echo the_content();?>
-                        <p class="text mt-4 pt-3 px-5">Eventuele extra beschrijving of instructies over de challenge (wat hoe waar etc).</p>
-                        <div id="btn-div" class="mt-4 p-2 px-4 text-white"><button onclick="accepted()" class="btn btn-primary">challenge accepted</button></div>
+                    <div class="col-12 col-md-6 text-center">
+                        <div class="counter mb-4 pb-3">Challenge #<?php echo $published_posts; ?></div>
+
+                        <?php
+                            if (have_posts()) :
+                                while (have_posts()) : the_post();
+                                    if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) { ?>
+
+                                        <h1 class="home mb-4 pb-1"><?php the_title(); ?></h1>
+                                        <?php the_content(); ?>
+                                        <?php the_post_thumbnail(); ?>
+                                <?php
+                                    }
+                                  
+                                endwhile;
+                            else :
+                                ?>
+                                <h2>Oeps...</h2>
+                                <p>Sorry, er is geen challenge gevonden voor vandaag</p>
+                            <?php
+                            endif;
+                        ?>
+                        
+                        <div id="btn-div" class="mt-5 text-white"><button onclick="accepted()" class="btn btn-primary">Challenge accepted?</button></div>
                     </div>
                 </div>
             </div>
@@ -41,9 +61,7 @@
 <?php get_footer(); ?>
 
 <?php
-// get_header();
 
-// echo "<hr>";
 
 // // gets the challenge that is written in the content from homepage fast (NOT FOR LONG TERM)
 // $challenge = the_content();
@@ -59,7 +77,6 @@
 
 // // sets time zone and get date
 // date_default_timezone_set('Europe/Amsterdam');
-// //$timeToday = date('H:i');
 // $dayToday = date('D');
 
 // // checks if empty otherwise posts user friendly sentence
@@ -105,9 +122,4 @@
 
 // // day
 // echo $dayToday;
-
-// echo "<hr>";
-
-// get_sidebar();
-// get_footer();
 ?>
