@@ -34,20 +34,26 @@
                         <?php
                             if (have_posts()) :
                                 while (have_posts()) : the_post();
-                                    if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) { ?>
 
+                                    if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) { ?>
                                         <h1 class="home mb-4 pb-1"><?php the_title(); ?></h1>
-                                        <?php the_content(); ?>
-                                        <?php the_post_thumbnail(); ?>
-                                <?php
+
+                                        <?php 
+                                        the_content();
+                                        the_post_thumbnail(); 
+                                        break; // otherwise it loops too much
+                                    
+
+                                    } else {
+                                        echo "<h2>Oeps...</h2>";
+                                        echo "<p>Sorry, er is geen challenge gevonden voor vandaag</p>";
+                                        break; // otherwise it loops too much and message gets shown * total posts
                                     }
-                                  
+
                                 endwhile;
                             else :
-                                ?>
-                                <h2>Oeps...</h2>
-                                <p>Sorry, er is geen challenge gevonden voor vandaag</p>
-                            <?php
+                                echo "<h2>Oeps...</h2>";
+                                echo "<p>Sorry, er is geen challenge gevonden voor vandaag</p>";
                             endif;
                         ?>
                         
