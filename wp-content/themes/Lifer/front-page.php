@@ -1,6 +1,25 @@
 <?php get_header(); ?>
-<?php $published_posts = wp_count_posts()->publish; // gets the total posts for challenge #??> 
+<?php $published_posts = wp_count_posts()->publish; // gets the total posts for challenge #??>
 
+<?php
+// check if posts = true and while its true loops through the posts and searches for matching date
+// after that get the category and put it in $theme then send it to js and do onload in body to add styling
+    if (have_posts()) :
+        while (have_posts()) : the_post();
+
+            if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) {
+
+                $cato = get_the_category();
+                $theme = $cato[0]->name;
+                $func = "javascript:change_theme('$theme')";
+
+            }
+
+        endwhile;
+    endif;
+?>
+
+<body onLoad="<?=$func;?>">
     <section id="header">
         <div id="header-img">
             <img class="ps-4 pt-3" src="<?php echo get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px">
@@ -29,16 +48,16 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 text-center">
-                        <div class="counter mb-4 pb-3">Challenge #<?php echo $published_posts; ?></div>
+                        <div id="counter" class="counter mb-4 pb-3">Challenge #<?php echo $published_posts; ?></div>
 
                         <?php
                             if (have_posts()) :
                                 while (have_posts()) : the_post();
 
                                     if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) { ?>
-                                        <h1 class="home mb-4 pb-1"><?php the_title(); ?></h1>
+                                        <h1 id="home" class="home mb-4 pb-1"><?php the_title(); ?></h1>
 
-                                        <?php 
+                                        <?php
                                         the_content();
                                         the_post_thumbnail(); 
                                         break; // otherwise it loops too much
@@ -53,79 +72,65 @@
                                 endwhile;
                             else :
                                 echo "<h2>Oeps...</h2>";
-                                echo "<p>Sorry, er is geen challenge gevonden voor vandaag</p>";
+                                echo "<p>Sorry, er zijn helemaal geen challenges gevonden nergens</p>";
                             endif;
                         ?>
                         
-                        <div id="btn-div" class="mt-5 text-white"><button onclick="accepted()" class="btn btn-primary">Challenge accepted?</button></div>
+                        <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- GOOGLE TRANSLATE -->
+	
+	<!-- <div id="google_translate_element"></div>
+	
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{pageLanguage: 'en'},
+				'google_translate_element'
+			);
+		}
+	</script>
+	<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+	
+
+
+    <?php
+        // COOKIES 
+
+        //create a function to get the right challenge 
+        // function getChallenge($challenge){
+        //     $challenge = $_POST['challenge'];
+
+        //     if($counter){                   // up the counter if the challenge is clicked
+
+        //     } else {                // store this is the cookie
+
+        //     }
+        // }
+
+        // check if the cookie is set
+        // if (!isset($_POST['challenge'])){
+        //     //$challenge = htmlentities($_POST['challenge']);
+        //     echo "Challenge " . $challenge . " is niet gezet";
+        // } else {
+        //     echo "Challenge " . $challenge . " is gezet";
+        //     echo $_COOKIE[$challenge];
+        // }
+    ?>
+
+    <!-- 
+        form waarin je de challenge nummer door moet gaan geven aan 
+        die count zodat je kan kijke of de knop geklikt is
+    -->
+    
+    <!-- <form action="" method = post>
+        <input type="submit" name="challenge" value="submit"/> the challenge number
+        <input type="hidden" name="counter" value="counter"/> to count if the button is pressed
+    </form> -->
+
 <?php get_footer(); ?>
-
-<?php
-
-
-// // gets the challenge that is written in the content from homepage fast (NOT FOR LONG TERM)
-// $challenge = the_content();
-
-// // cms replacements to set challenges ready for the whole week
-// $monday = "MAANDAG CHALLENGE";
-// $tuesday = "DINSDAG CHALLENGE";
-// $wednesday = "WOENSDAG CHALLENGE";
-// $thursday = "DONDERDAG CHALLENGE";
-// $friday = "VRIJDAG CHALLENGE";
-// $saturday = "ZATERDAG CHALLENGE";
-// $sunday = "ZONDAG CHALLENGE";
-
-// // sets time zone and get date
-// date_default_timezone_set('Europe/Amsterdam');
-// $dayToday = date('D');
-
-// // checks if empty otherwise posts user friendly sentence
-// $monday = !empty($monday) ? $monday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-// $tuesday = !empty($tuesday) ? $tuesday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-// $wednesday = !empty($wednesday) ? $wednesday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-// $thursday = !empty($thursday) ? $thursday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-// $friday = !empty($friday) ? $friday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-// $saturday = !empty($saturday) ? $saturday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-// $sunday = !empty($sunday) ? $sunday : "De challenge wordt elk moment erop gezet. Sorry voor de vertraging!";
-
-// // checks day and if it matches get the good challenge for the day
-// switch ($dayToday) {
-//     case "Mon":
-//         $answer = $monday;
-//         // function = SELECT otherwise CREATE || code dat de challenge naar de database stuurt
-//         break;
-//     case "Tue":
-//         $answer = $tuesday;
-//         break;
-//     case "Wed":
-//         $answer = $wednesday;
-//         break;
-//     case "Thu":
-//         $answer = $thursday;
-//         break;
-//     case "Fri":
-//         $answer = $friday;
-//         break;
-//     case "Sat":
-//         $answer = $saturday;
-//         break;
-//     case "Sun":
-//         $answer = $sunday;
-//         break;
-// }
-
-// // check the day and posts the message (cms that will be added later for 7 days challenges preset)
-// echo $answer . "<br>";
-
-// // quick challenge adding from content
-// echo $challenge . "<br>";
-
-// // day
-// echo $dayToday;
-?>

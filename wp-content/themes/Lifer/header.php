@@ -1,3 +1,19 @@
+<?php
+    setcookie("challenge", $challenge, time() + (10 * 365 * 24 * 60 * 60), "/"); //create the cookie, the time here is empty because I don't know how to do it
+
+    /**
+     * Set cookie (first with global value otherwise we need to find a special value for a special user)
+     * Check if cookies are set otherwise give them the oppurtunity to accept cookies again with the same value
+     * Store the counter in this cookie for the challenges in a $var
+     * Keep the $var counter saved to this user so they come back later (use cookie $var? and test)
+     * ---
+     * When user comes back:
+     * Maybe cookies stay bcs of the 10 years duration time() + (10 * 365 * 24 * 60 * 60) otherwise accept cookies
+     * The counter should be the same that is saved to this user
+     */
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,5 +27,3 @@
     <title><?php wp_title(); ?> - <?php bloginfo( 'name' ); ?></title>
     <?php wp_head(); ?>
     </head>
-
-    <body>

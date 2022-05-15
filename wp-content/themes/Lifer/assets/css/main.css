@@ -54,9 +54,28 @@ p, .counter{
 }
 
 /* btn */
-.btn-primary{
-  background-color: #1004c3 !important;
-  border-color: #1004c3 !important;
+.btn-blue{
+  background-color: #1004c3;
+  border-color: #1004c3;
+  color: #fff;
+}
+
+.btn-pink{
+  background-color: #ff006f;
+  border-color: #ff006f;
+  color: #fff;
+}
+
+.btn-yellow{
+  background-color: #bfff00;
+  border-color: #bfff00;
+  color: #fff;
+}
+
+.btn-aqua{
+  background-color: #00b6a6;
+  border-color: #00b6a6;
+  color: #fff;
 }
 
 .btn{
