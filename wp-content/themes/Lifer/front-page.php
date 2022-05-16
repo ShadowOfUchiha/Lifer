@@ -76,7 +76,22 @@
                             endif;
                         ?>
                         
-                        <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>
+                        <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>                        
+
+                        <div id="myModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content col-12 col-md-6 text-center">
+                                <span class="close">&times;</span>
+                                <h1 class="modaltext">Nice - Succes!</h1>
+                                <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/giphy.gif" alt="gif" height="200px"></div>
+                                <p class="modaltext pt-3">0 challenges aangenomen</p>
+                                <p class="modaltext">Volgende challenge:</p> 
+                                <p id="countdown"></p>
+                                <p class="modaltext">challenge een ander</p>
+                                <p class="modaltext">Werk verder aan je welzijn</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
