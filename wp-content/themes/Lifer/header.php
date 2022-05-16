@@ -1,5 +1,5 @@
 <?php
-    setcookie("challenge", $challenge, time() + (10 * 365 * 24 * 60 * 60), "/"); //create the cookie, the time here is empty because I don't know how to do it
+    //setcookie("challenge", $challenge, time() + (10 * 365 * 24 * 60 * 60), "/"); //create the cookie, the time here is empty because I don't know how to do it
 
     /**
      * Set cookie (first with global value otherwise we need to find a special value for a special user)
