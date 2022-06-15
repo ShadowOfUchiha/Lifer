@@ -179,7 +179,7 @@ p, .counter{
 #header .nav-width {
   width: 320px;
 }
-#header .sidenav a {
+#header .sidenav li a {
   padding: 8px 30px 20px 45px;
   text-decoration: none;
   font-size: 25px;
@@ -188,10 +188,18 @@ p, .counter{
   transition: 0.3s;
 }
 
-#header .sidenav a:last-child {
+#header .sidenav li{
+  	text-decoration: none;
+    list-style-type: none;
+}
+
+#header .sidenav li:last-child {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+#header .sidenav li:last-child a {
   font-size: 18px;
 }
 

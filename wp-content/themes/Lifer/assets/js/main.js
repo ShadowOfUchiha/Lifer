@@ -2,82 +2,82 @@ function change_theme($theme) {
     document.getElementById("homeBtn").classList.remove('btn-blue');
 
     switch ($theme) {
-        case "Groen-Roze":
+        case "3":
             $bgColor = "#65ff00";
             $color = "#ff006f";
             document.getElementById("homeBtn").classList.add('btn-pink');
             break;
-        case "Paars-Groen":
+        case "1":
             $bgColor = "#9100ff";
             $color = "#a0d700";
             document.getElementById("homeBtn").classList.add('btn-green');
             break;
-        case "Oranje-Aqua":
+        case "4":
             $bgColor = "#ffdb00";
             $color = "#00b6a6";
             document.getElementById("homeBtn").classList.add('btn-aqua');
             break;
-        case "Roze-Blauw":
+        case "2":
             $bgColor = "#ff0087";
             $color = "#2601e7";
             document.getElementById("homeBtn").classList.add('btn-blue');
             break;
-        case "Oranje-Lichtpaars":
+        case "6":
             $bgColor = "#ff7101";
             $color = "#5600d7";
             document.getElementById("homeBtn").classList.add('btn-lightpurple');
             break;
-        case "Geel-Paars":
+        case "5":
             $bgColor = "#fed000";
             $color = "#3d0077";
             document.getElementById("homeBtn").classList.add('btn-purple');
             break;
-        case "Lichtroze-Lichtblauw":
+        case "7":
             $bgColor = "#ff00fc";
             $color = "#0088fe";
             document.getElementById("homeBtn").classList.add('btn-lightblue');
             break;
-        case "Blauw-Oranje":
+        case "8":
             $bgColor = "#008ac3";
             $color = "#ff723d";
             document.getElementById("homeBtn").classList.add('btn-orange');
             break;
-        case "Oceaanblauw-Lichtoranje":
+        case "9":
             $bgColor = "#1c00a0";
             $color = "#ff9501";
             document.getElementById("homeBtn").classList.add('btn-lightorange');
             break;
-        case "Muntgroen-Donkerroze":
+        case "10":
             $bgColor = "#69ff94";
             $color = "#760147";
             document.getElementById("homeBtn").classList.add('btn-darkpink');
             break;
-        case "Cyan-Lichtroze":
+        case "11":
             $bgColor = "#760147";
             $color = "#d700d7";
             document.getElementById("homeBtn").classList.add('btn-lightpink');
             break;
-        case "Oranjerood-Muntgroen":
+        case "12":
             $bgColor = "#fe0000";
             $color = "#00fa74";
             document.getElementById("homeBtn").classList.add('btn-mintgreen');
             break;
-        case "Olijfgroen-Donkergeel":
+        case "13":
             $bgColor = "#187a15";
             $color = "#d6c109";
             document.getElementById("homeBtn").classList.add('btn-darkyellow');
             break;
-        case "Donkerroze-Kiwigroen":
+        case "14":
             $bgColor = "#8b005d";
             $color = "#5acb0f";
             document.getElementById("homeBtn").classList.add('btn-kiwi');
             break;
-        case "Roze-Bladgroen":
+        case "15":
             $bgColor = "#fe678a";
             $color = "#1ea020";
             document.getElementById("homeBtn").classList.add('btn-leafgreen');
             break;
-        case "Bruin-Luchtblauw":
+        case "16":
             $bgColor = "#7b0002";
             $color = "#2dbaba";
             document.getElementById("homeBtn").classList.add('btn-sky');
