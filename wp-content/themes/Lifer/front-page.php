@@ -25,10 +25,10 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
     <section id="header">
         <div id="header-img">
             <img class="ps-4 pt-3" src="<?php echo get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px">
-                                <!-- outputs a list of languages flags -->
-                                <ul>
-                    <?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
-                    </ul>
+        <!-- outputs a list of languages flags -->
+        <!-- <ul>
+                <?php //pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
+            </ul> -->
             <div class="container h-100">
                 <!-- hamburger menu -->
                 <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
