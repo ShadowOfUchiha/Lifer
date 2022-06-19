@@ -362,6 +362,10 @@ p, .counter{
   color: #fff;
 }
 
+.about{
+  font-family:'Poppins', sans-serif;
+  background-color: #FFD100;
+}
 
 @media screen and (min-width: 767px){
   .home{
