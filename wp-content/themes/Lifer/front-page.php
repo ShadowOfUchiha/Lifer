@@ -55,8 +55,18 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
                         <?php
                             if (have_posts()) :
                                 while (have_posts()) : the_post();
+                                    if (get_the_title() == "Lightbox") : ?>
 
-                                    if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) { ?>
+                                        <?php
+                                        $lightbox = get_the_content();
+                                        // otherwise it loops too much
+
+                                    endif;
+                                endwhile;
+
+                                while (have_posts()) : the_post();
+
+                                    if (get_the_date( 'Y-m-d' ) == date("Y-m-d")) : ?>
                                         <h1 id="home" class="home mb-4 pb-1"><?php the_title(); ?></h1>
 
                                         <?php
@@ -65,16 +75,16 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
                                         break; // otherwise it loops too much
                                     
 
-                                    } else {
+                                    else :
                                         echo "<h2>Oeps...</h2>";
                                         echo "<p>Sorry, er is geen challenge gevonden voor vandaag</p>";
                                         break; // otherwise it loops too much and message gets shown * total posts
-                                    }
+                                    endif;
 
                                 endwhile;
-                            else :
-                                echo "<h2>Oeps...</h2>";
-                                echo "<p>Sorry, er zijn helemaal geen challenges gevonden nergens</p>";
+                            // else :
+                            //     echo "<h2>Oeps...</h2>";
+                            //     echo "<p>Sorry, er zijn helemaal geen challenges gevonden nergens</p>";
                             endif;
                         ?>
                         
@@ -84,13 +94,16 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
                             <!-- Modal content -->
                             <div class="modal-content col-12 col-md-6 text-center">
                                 <span class="close">&times;</span>
-                                <h1 class="modaltext">Nice - Succes!</h1>
+                                <?php
+                                    echo $lightbox;
+                                ?>
+                                <!-- <h1 class="modaltext">Nice - Succes!</h1>
                                 <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/giphy.gif" alt="gif" height="200px"></div>
                                 <p class="modaltext pt-3">0 challenges aangenomen</p>
                                 <p class="modaltext">Volgende challenge:</p> 
                                 <p id="countdown"></p>
                                 <p class="modaltext">challenge een ander</p>
-                                <p class="modaltext">Werk verder aan je welzijn</p>
+                                <p class="modaltext">Werk verder aan je welzijn</p> -->
                             </div>
                         </div>
 
