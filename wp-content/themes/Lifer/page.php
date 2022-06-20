@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-<body class="about">
+<body class="page-body">
     <section id="header">
         <div id="header-img">
-            <img class="ps-4 pt-3" src="<?php echo get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px">
+        <a href="<?= get_home_url();; ?>" class=""><img class="ps-4 pt-3" src="<?= get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px"></a>
         <!-- outputs a list of languages flags -->
         <!-- <ul>
                 <?php //pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
@@ -26,8 +26,8 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 text-center">
-                <h1><?=the_title();?></h1>
+            <div class="col-12 col-md-6 col-lg-6 text-center">
+                <h1 class="home mt-4 mb-5 pb-3"><?=the_title();?></h1>
                 <div> <p><?=the_content();?></p> </div> 
             </div>                    
         </div>    

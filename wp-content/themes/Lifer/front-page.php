@@ -22,9 +22,9 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
 ?>
 
 <body onLoad="<?=$func;?>">
-    <section id="header">
+    <header id="header">
         <div id="header-img">
-            <img class="ps-4 pt-3" src="<?php echo get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px">
+            <a href="<?= get_home_url();; ?>" class=""><img class="ps-4 pt-3" src="<?= get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px"></a>
         <!-- outputs a list of languages flags -->
         <!-- <ul>
                 <?php //pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
@@ -43,13 +43,13 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
                 </div>
             </div>
         </div>
-    </section>                                        
+    </header>                                        
                                 
     <section id="challenge">
         <div class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 text-center">
+                    <div class="col-12 col-md-9 col-lg-6 text-center">
                         <div id="counter" class="counter mb-4 pb-3">Challenge #<?php echo $published_posts; ?></div>
 
                         <?php
