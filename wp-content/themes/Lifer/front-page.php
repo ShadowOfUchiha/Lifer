@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <?php $published_posts = wp_count_posts()->publish; // gets the total posts for challenge #? 
 $published_posts /= 2; // divided by 2 bcs there will be always a english version of the same challenge
+$published_posts -= 1;
 ?>
 
 <?php
@@ -24,15 +25,17 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
 <body onLoad="<?=$func;?>">
     <header id="header">
         <div id="header-img">
-            <a href="<?= get_home_url();; ?>" class=""><img class="ps-4 pt-3" src="<?= get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px"></a>
-        <!-- outputs a list of languages flags -->
-        <!-- <ul>
-                <?php //pll_the_languages( array( 'show_flags' => 1,'show_names' => 0 ) ); ?>
-            </ul> -->
-            <div class="container h-100">
+
+            <!-- outputs a list of languages flags -->
+            <ul id="trans_wrapper">
+                <?php pll_the_languages( array( 'display_names_as' => 'slug' ) ); ?>
+            </ul>
+
+            <a href="<?= get_home_url(); ?>" class=""><img class="ps-4 pt-3" src="<?= get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px"></a>
+            <div class="container h-100" id="wrapper">
                 <!-- hamburger menu -->
                 <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-                <label for="openSidebarMenu" class="sidebarIconToggle" onClick="navbar()">
+                <label for="openSidebarMenu" class="sidebarIconToggle" id="sideBarLabel" onClick="navbar()">
                     <div class="spinner diagonal part-1"></div>
                     <div class="spinner horizontal"></div>
                     <div class="spinner diagonal part-2"></div>
