@@ -35,7 +35,7 @@ $published_posts -= 1;
             <div class="container h-100" id="wrapper">
                 <!-- hamburger menu -->
                 <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-                <label for="openSidebarMenu" class="sidebarIconToggle" id="sideBarLabel" onClick="navbar()">
+                <label for="openSidebarMenu" class="sidebarIconToggle" id="sideBarLabel" onclick="navbar()">
                     <div class="spinner diagonal part-1"></div>
                     <div class="spinner horizontal"></div>
                     <div class="spinner diagonal part-2"></div>
@@ -94,34 +94,30 @@ $published_posts -= 1;
                         <!-- <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>                         -->
 
                         <?php
-                        $cookie = "challenge";
-                        $cookie_value = 1;
-                        ?>
+                            $cookie = "challenge";
+                            $cookie_value = 1;
 
-                        <?php
-
-                       
-                                if(isset($_GET[$cookie])){
-                                    if(!isset($_COOKIE[$cookie])) {
-                                        setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
-                                        echo "1 challenge aangenomen";
-
-                                    } else {
-                                        $cookie_value = $_COOKIE[$cookie]+1;
-                                        setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
-                                        echo $cookie_value . " challenges aangenomen";
-                                    }
-
-                                } else if(isset($_COOKIE[$cookie])){
-                                    echo $_COOKIE[$cookie] . " challenges aangenomen";
+                            if(isset($_GET[$cookie])){
+                                if(!isset($_COOKIE[$cookie])) {
+                                    setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
+                                    echo "1 challenge aangenomen";
 
                                 } else {
-                                    echo "0 challenges aangenomen";
+                                    $cookie_value = $_COOKIE[$cookie]+1;
+                                    setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
+                                    echo $cookie_value . " challenges aangenomen";
                                 }
+
+                            } else if(isset($_COOKIE[$cookie])){
+                                echo $_COOKIE[$cookie] . " challenges aangenomen";
+
+                            } else {
+                                echo "0 challenges aangenomen";
+                            }
                         ?>
 
-                        <div id="btn-div" class="mt-5 text-white"><a href="?<?php echo $cookie; ?>"><button>Neem challenge aan</button></a></div>
-                        
+                        <div id="btn-div" class="mt-5 text-white"><a id="test" onclick="reloadP()" href="?<?php echo $cookie; ?>"><button id="homeBtn" class="btn btn-blue">Neem challenge aan</button></a></div>
+
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content col-12 col-md-6 text-center">
@@ -144,39 +140,5 @@ $published_posts -= 1;
             </div>
         </div>
     </section>	
-
-    <?php
-        // COOKIES 
-
-        //create a function to get the right challenge 
-        // function getChallenge($challenge){
-        //     $challenge = $_POST['challenge'];
-
-        //     if($counter){                   // up the counter if the challenge is clicked
-
-        //     } else {                // store this is the cookie
-
-        //     }
-        // }
-
-        // check if the cookie is set
-        // if (!isset($_POST['challenge'])){
-        //     //$challenge = htmlentities($_POST['challenge']);
-        //     echo "Challenge " . $challenge . " is niet gezet";
-        // } else {
-        //     echo "Challenge " . $challenge . " is gezet";
-        //     echo $_COOKIE[$challenge];
-        // }
-    ?>
-
-    <!-- 
-        form waarin je de challenge nummer door moet gaan geven aan 
-        die count zodat je kan kijke of de knop geklikt is
-    -->
     
-    <!-- <form action="" method = post>
-        <input type="submit" name="challenge" value="submit"/> the challenge number
-        <input type="hidden" name="counter" value="counter"/> to count if the button is pressed
-    </form> -->
-
 <?php get_footer(); ?>
