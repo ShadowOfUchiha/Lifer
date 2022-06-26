@@ -27,9 +27,9 @@ $published_posts -= 1;
         <div id="header-img">
 
             <!-- outputs a list of languages flags -->
-            <ul id="trans_wrapper">
-                <?php pll_the_languages( array( 'display_names_as' => 'slug' ) ); ?>
-            </ul>
+            <!-- <ul id="trans_wrapper">
+                <?php //pll_the_languages( array( 'display_names_as' => 'slug' ) ); ?>
+            </ul> -->
 
             <a href="<?= get_home_url(); ?>" class=""><img class="ps-4 pt-3" src="<?= get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px"></a>
             <div class="container h-100" id="wrapper">
@@ -93,34 +93,47 @@ $published_posts -= 1;
                         
                         <!-- <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>                         -->
 
+
                         <?php
-                        $cookie = "challenge";
-                        $cookie_value = 1;
+$cookie = "challenge";
+$cookie_value = 1;
+?>
+<html>
+
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="robots" content="noindex">
+</head>
+
+
+                        <?php
+                        // $cookie = "challenge";
+                        // $cookie_value = 1;
                         ?>
 
                         <?php
 
-                       
-                                if(isset($_GET[$cookie])){
-                                    if(!isset($_COOKIE[$cookie])) {
-                                        setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
-                                        echo "1 challenge aangenomen";
+                                // if(isset($_GET[$cookie])){
+                                //     if(!isset($_COOKIE[$cookie])) {
+                                //         setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
+                                //         echo "1 challenge aangenomen";
 
-                                    } else {
-                                        $cookie_value = $_COOKIE[$cookie]+1;
-                                        setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
-                                        echo $cookie_value . " challenges aangenomen";
-                                    }
+                                //     } else {
+                                //         $cookie_value = $_COOKIE[$cookie]+1;
+                                //         setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
+                                //         echo $cookie_value . " challenges aangenomen";
+                                //     }
 
-                                } else if(isset($_COOKIE[$cookie])){
-                                    echo $_COOKIE[$cookie] . " challenges aangenomen";
+                                // } else if(isset($_COOKIE[$cookie])){
+                                //     echo $_COOKIE[$cookie] . " challenges aangenomen";
 
-                                } else {
-                                    echo "0 challenges aangenomen";
-                                }
+                                // } else {
+                                //     echo "0 challenges aangenomen";
+                                // }
                         ?>
 
-                        <div id="btn-div" class="mt-5 text-white"><a href="?<?php echo $cookie; ?>"><button>Neem challenge aan</button></a></div>
+                        <!-- <div id="btn-div" class="mt-5 text-white"><a href="?<?php echo $cookie; ?>"><button>Neem challenge aan</button></a></div> -->
                         
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
@@ -129,13 +142,13 @@ $published_posts -= 1;
                                 <?php
                                     echo $lightbox;
                                 ?>
-                                <!-- <h1 class="modaltext">Nice - Succes!</h1>
+                                <h1 class="modaltext">Nice - Succes!</h1>
                                 <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/giphy.gif" alt="gif" height="200px"></div>
                                 <p class="modaltext pt-3">0 challenges aangenomen</p>
                                 <p class="modaltext">Volgende challenge:</p> 
                                 <p id="countdown"></p>
                                 <p class="modaltext">challenge een ander</p>
-                                <p class="modaltext">Werk verder aan je welzijn</p> -->
+                                <p class="modaltext">Werk verder aan je welzijn</p>
                             </div>
                         </div>
 
