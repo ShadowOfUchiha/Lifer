@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* general */
 html {
@@ -72,14 +72,6 @@ p, .counter{
 #challenge p {
   font-size: 23px;
   font-weight: 600;
-  margin-left: 2.2rem;
-  margin-right: 2.2rem;
-}
-
-@media screen and (min-width: 767px){
-  .home{
-    font-size: 75px;
-  }
 }
 
 .text{
@@ -323,19 +315,22 @@ p, .counter{
   font-size: 60px;
   margin-top: 0px;
   color: white;
+  font-weight: bold!important;
 }
 
 /* modal styling */
 
-#myModal p {
+#myModal p, #myModal span, #myModal a {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   color: #fff!important;
+  margin-bottom: 0.7rem;
 }
 
 #myModal h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
+  color: #fff;
 }
 
 /* modaltext */
@@ -384,25 +379,65 @@ p, .counter{
 
 /* translate */
 
-#gtranslate_wrapper {
-  top: 29px!important;
+#trans_wrapper {
+  top: 29px;
+  right: 100px;
+  position: absolute;
+  list-style-type: none;
+  display: flex;
+  text-transform: uppercase;
 }
 
-#gtranslate_wrapper a {
-  color: #fff;
+#trans_wrapper a {
+  text-decoration: none;
+  font-size: 19px;
 }
 
-#gtranslate_wrapper a:first-child::after {
-  content: " |";
-  color: #fff;
+#trans_wrapper a:active {
+  text-decoration: underline;
 }
+
+#trans_wrapper li:first-child::after {
+  content: " |\00a0";
+  color: inherit;
+}
+
+.modal-content p:last-child {
+  margin-top: 1.1rem;
+}
+
+.modal-content p:last-child a {
+  margin-top: 1.1rem;
+  font-size: 18px!important;
+}
+  /* lightbox img */
+  .wp-block-image img {
+    height: 220px!important;
+    margin-bottom: 0.8rem;
+  }
 
 @media screen and (min-width: 767px){
   .home{
     font-size: 75px;
   }
   .modal-content{
-    width: 29%;
+    width: 60%;
+  }
+  /* lightbox img */
+  .wp-block-image img {
+    height: 250px!important;
+    margin-bottom: 0.8rem;
+  }
+
+  #challenge p {
+    margin-left: 2.2rem;
+    margin-right: 2.2rem;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .modal-content{
+    width: 31%;
   }
 }
 

@@ -98,22 +98,31 @@ function change_theme($theme) {
 
     // all <p> elements color
     document.querySelectorAll('p').forEach(e => e.style.color = $color);
+
+    // language switcher
+    document.getElementById('trans_wrapper').querySelectorAll('li').forEach(e => e.style.color = $color);
+    document.getElementById('trans_wrapper').querySelectorAll('a').forEach(e => e.style.color = $color);
+
     // hamburger menu bgcolor
     document.querySelectorAll('.spinner').forEach(e => e.style.backgroundColor = $color);
 
 }
 
-function navbar() {
-    let element = document.querySelector(".sidenav");
-    element.classList.toggle("nav-width")
-}
+const checkbox = document.getElementById('openSidebarMenu')
+const wrapper = document.getElementById('wrapper')
+const isChecked = checkbox.value
 
-function accepted() {
-    btnDiv = document.getElementById('btn-div');
+const navbar = () => {
+  let element = document.querySelector(".sidenav");
+  element.classList.toggle("nav-width");
+};
 
-    // change style button (give class)
-    btnDiv.innerHTML = "✓ Challenge accepted!";  
-}
+window.addEventListener('click', (e) => {
+    if (!wrapper.contains(e.target) && checkbox.checked){
+      navbar()
+      checkbox.checked = !isChecked
+  } 
+})
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -127,6 +136,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
+
+    btnDiv = document.getElementById('btn-div');
+
+    // change style button (give class)
+    btnDiv.innerHTML = "✓ Challenge accepted!";  
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -140,7 +154,6 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
 
 // Set the date we're counting down to
 const today = new Date();
@@ -157,7 +170,7 @@ setInterval(() => {
   );
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  const message = `${hours} hours, ${minutes} minutes and ${seconds} seconds left`;
+  const message = `${hours}:${minutes}:${seconds}`;
 
   document.getElementById("countdown").innerHTML = message;
 
