@@ -78,8 +78,37 @@ $published_posts /= 2; // divided by 2 bcs there will be always a english versio
                             endif;
                         ?>
                         
-                        <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>                        
+                        <!-- <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>                         -->
 
+                        <?php
+                        $cookie = "challenge";
+                        $cookie_value = 1;
+                        ?>
+
+                        <?php
+
+                       
+                                if(isset($_GET[$cookie])){
+                                    if(!isset($_COOKIE[$cookie])) {
+                                        setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
+                                        echo "1 challenge aangenomen";
+
+                                    } else {
+                                        $cookie_value = $_COOKIE[$cookie]+1;
+                                        setcookie($cookie, $cookie_value, time() + (86400 * 30), "/"); 
+                                        echo $cookie_value . " challenges aangenomen";
+                                    }
+
+                                } else if(isset($_COOKIE[$cookie])){
+                                    echo $_COOKIE[$cookie] . " challenges aangenomen";
+
+                                } else {
+                                    echo "0 challenges aangenomen";
+                                }
+                        ?>
+
+                        <div id="btn-div" class="mt-5 text-white"><a href="?<?php echo $cookie; ?>"><button>Neem challenge aan</button></a></div>
+                        
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content col-12 col-md-6 text-center">

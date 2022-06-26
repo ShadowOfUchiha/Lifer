@@ -19,6 +19,24 @@ body{
   background-color: #FFD100;
 }
 
+.bg-purple{
+  background-color: purple;
+  padding: 2%;
+}
+
+.bg-purple p{
+  color: yellow!important;
+  font-size: large;
+}
+
+.bg-purple h1{
+  font-size: 100px;
+}
+
+.page-body h1{
+  font-size:60px;
+}
+
 .page-body h1,.page-body h2,.page-body h3,.page-body h4,.page-body h5,.page-body p {
   color: #3d0077;
 }
