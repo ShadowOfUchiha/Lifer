@@ -113,15 +113,15 @@ const wrapper = document.getElementById('wrapper')
 const isChecked = checkbox.value
 
 const navbar = () => {
-  let element = document.querySelector(".sidenav");
-  element.classList.toggle("nav-width");
+    let element = document.querySelector(".sidenav");
+    element.classList.toggle("nav-width");
 };
 
 window.addEventListener('click', (e) => {
-    if (!wrapper.contains(e.target) && checkbox.checked){
-      navbar()
-      checkbox.checked = !isChecked
-  } 
+    if (!wrapper.contains(e.target) && checkbox.checked) {
+        navbar()
+        checkbox.checked = !isChecked
+    }
 })
 
 // Get the modal
@@ -134,6 +134,7 @@ var btn = document.getElementById("homeBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
+/*
 btn.onclick = function() {
     modal.style.display = "block";
 
@@ -142,40 +143,54 @@ btn.onclick = function() {
     // change style button (give class)
     btnDiv.innerHTML = "✓ Challenge accepted!";  
 }
+*/
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+var currentUrl = window.location.href;
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
+if (currentUrl.includes("popup")) {
+    modal.style.display = "block";
+
+    btnDiv = document.getElementById('btn-div');
+
+    // change style button (give class)
+    btnDiv.innerHTML = "✓ Challenge accepted!";
+
+    span.onclick = function () {
         modal.style.display = "none";
     }
-}
 
-// Set the date we're counting down to
-const today = new Date();
-const countDownDate = new Date(today);
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
-countDownDate.setDate(countDownDate.getDate() + 1);
-countDownDate.setHours(0, 0, 0, 0);
+    // Set the date we're counting down to
+    const today = new Date();
+    const countDownDate = new Date(today);
 
-setInterval(() => {
-  const now = new Date().getTime();
-  const distance = countDownDate.getTime() - now;
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  const message = `${hours}:${minutes}:${seconds}`;
-
-  document.getElementById("countdown").innerHTML = message;
-
-  if (distance <= 0) {
     countDownDate.setDate(countDownDate.getDate() + 1);
     countDownDate.setHours(0, 0, 0, 0);
-  }
-}, 1000);
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countDownDate.getTime() - now;
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const message = `${hours}:${minutes}:${seconds}`;
+
+        document.getElementById("countdown").innerHTML = message;
+
+        if (distance <= 0) {
+            countDownDate.setDate(countDownDate.getDate() + 1);
+            countDownDate.setHours(0, 0, 0, 0);
+        }
+    }, 1000);
+}
+
+
+

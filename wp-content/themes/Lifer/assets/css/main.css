@@ -20,13 +20,23 @@ body{
 }
 
 .bg-purple{
-  background-color: purple;
-  padding: 2%;
+  /* background-color: purple; */
+  padding: 0%;
+}
+
+.wp-block-audio{
+  background-color: #380474;
+  margin-bottom: 20px;
 }
 
 .bg-purple p{
   color: yellow!important;
   font-size: large;
+  background-color: #380474;
+  margin-bottom: 0px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.4rem;
 }
 
 .bg-purple h1{
@@ -467,4 +477,3 @@ p, .counter{
     font-size: 18px;
   }
 }
-
