@@ -18,12 +18,20 @@ if (have_posts()) :
     endwhile;
 endif;
 ?>
-<!-- <body onLoad="<=$func;?>"> -->
-<html>
 
-<head>
-    <title>Life</title>
-</head>
+<?php 
+        // THIS IS INSIDE THE WORDPRESS EDITOR POST
+        
+    // if (isset($_COOKIE["challenge"])) {
+    //     $cookie = $_COOKIE["challenge"] + 1;
+    // } else {
+    //     $cookie = 1; // will be called in wordpress editor
+    // }
+
+?>
+
+
+<!-- <body onLoad="<?=$func;?>"> -->
 
 <body onLoad="">
 
@@ -31,10 +39,9 @@ endif;
         <div id="header-img">
 
             <!-- outputs a list of languages flags -->
-            <!-- <ul id="trans_wrapper">
-                <?php //pll_the_languages( array( 'display_names_as' => 'slug' ) ); 
-                ?>
-            </ul> -->
+            <ul id="trans_wrapper">
+                <?php pll_the_languages( array( 'display_names_as' => 'slug' ) ); ?>
+            </ul>
 
             <a href="<?= get_home_url(); ?>" class=""><img class="ps-4 pt-3" src="<?= get_template_directory_uri(); ?>/assets/img/Logo_lifer.png" alt="logo" height="60px"></a>
             <div class="container h-100" id="wrapper">
@@ -61,15 +68,13 @@ endif;
                         <div id="counter" class="counter mb-4 pb-3">Challenge #<?php echo $published_posts; ?></div>
                         <?php
                         if (have_posts()) :
-                            while (have_posts()) : the_post();
-                                if (get_the_title() == "Lightbox") : ?>
+                            // while (have_posts()) : the_post();
+                            //     if (get_the_title() == "Lightbox") :
 
-                                <?php
-                                    $lightbox = get_the_content();
-                                // otherwise it loops too much
+                            //         $lightbox = get_the_content();
 
-                                endif;
-                            endwhile;
+                            //     endif;
+                            // endwhile;
 
                             while (have_posts()) : the_post();
 
@@ -93,77 +98,34 @@ endif;
                         //     echo "<p>Sorry, er zijn helemaal geen challenges gevonden nergens</p>";
                         endif;
                         ?>
-                        <!-- <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>                         -->
-                        <?php
-                        // $cookie = "challenge";
-                        // $cookie_value = 1;
-                        // 
-
-                        /*
-                        $cookie = "challenge";
-                        $cookie_value = 1;
-                        $cookie_display_amount = 0;
-                        */
-
-                        //add_action('init', 'f_set_cookie');
-
-
-                        /*
-                        if (isset($_GET[$cookie])) {
-                            echo "test";
-                            if (!isset($_COOKIE[$cookie])) {
-                                setcookie($cookie, $cookie_value, time() + (86400 * 30), "/");
-                                echo "1 challenge aangesnomen";
-                                $cookie_display_amount = 1;
-                            } else {
-                                $cookie_value = $_COOKIE[$cookie] + 1;
-                                setcookie($cookie, $cookie_value, time() + (86400 * 30), "/");
-                                echo $cookie_value . " challenges aangenomen";
-                                $cookie_display_amount = $cookie_value;
-                            }
-                        } else if (isset($_COOKIE[$cookie])) {
-                            echo $_COOKIE[$cookie] . " challenges aangenomen";
-                            $cookie_display_amount = $_COOKIE[$cookie];
-                        } else {
-                            echo "0 challenges aangenomen";
-                            $cookie_display_amount = 0;
-                        }
-                        */
-                        ?>
-                        <?php if (!isset($_COOKIE["pjAcceptCookie"])) {
-                            //echo "<div class=\"alert alert-danger\" role=\"alert\">Om een challenge te kunnen accepteren moet u cookies accepteren</div>";
-                            echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><button id=\"homeBtn\" class=\"btn btn-blue\" disabled>Neem challenge aan</button></div>";
-                        }else{
-                            echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
-                        } ?>
+                        <!-- <div id="btn-div" class="mt-5 text-white"><button id="homeBtn" onclick="accepted()" class="btn btn-blue">Challenge accepted?</button></div>-->
                         
+                        <?php
+                            if (!isset($_COOKIE["pjAcceptCookie"])) {
+                                //echo "<div class=\"alert alert-danger\" role=\"alert\">Om een challenge te kunnen accepteren moet u cookies accepteren</div>";
+                                echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
+                            }else{
+                                echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
+                            }
+                        ?>
 
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content col-12 col-md-6 text-center">
                                 <span class="close">&times;</span>
                                 <?php
-                                echo $lightbox;
+                                    if (have_posts()) : // otherwise shortcode doesnt work inside lightbox
+                                        while (have_posts()) : the_post();
+                                            if (get_the_title() == "Lightbox") : ?>
+            
+                                            <?php
+                                                the_content();
+                                            // otherwise it loops too much
+            
+                                            endif;
+                                        endwhile;
+                                    endif;
                                 ?>
-                                <h1 class="modaltext">Nice - Succes!</h1>
-                                <div><img src="<?php echo get_template_directory_uri(); ?>/assets/img/giphy.gif" alt="gif" height="200px"></div>
-                                <p class="modaltext pt-3">
-                                    <?php
-                                    if (isset($_COOKIE["challenge"])) {
-                                        echo $_COOKIE["challenge"] + 1;
-                                    } else {
-                                        echo "1";
-                                    }
-                                    ?>
-                                    challenges aangenomen
-                                </p>
-
-
-
-                                <p class="modaltext">Volgende challenge:</p>
-                                <p id="countdown"></p>
-                                <p class="modaltext">challenge een ander</p>
-                                <p class="modaltext">Werk verder aan je welzijn</p>
                             </div>
                         </div>
 
