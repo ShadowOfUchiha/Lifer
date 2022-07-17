@@ -103,7 +103,7 @@ endif;
                         <?php
                             if (!isset($_COOKIE["pjAcceptCookie"])) {
                                 //echo "<div class=\"alert alert-danger\" role=\"alert\">Om een challenge te kunnen accepteren moet u cookies accepteren</div>";
-                                echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
+                                echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><button id=\"homeBtn\" class=\"btn btn-blue\" disabled>Neem challenge aan</button></div>";
                             }else{
                                 echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
                             }
@@ -116,11 +116,9 @@ endif;
                                 <?php
                                     if (have_posts()) : // otherwise shortcode doesnt work inside lightbox
                                         while (have_posts()) : the_post();
-                                            if (get_the_title() == "Lightbox") : ?>
+                                            if (get_the_title() == "Lightbox") :
             
-                                            <?php
                                                 the_content();
-                                            // otherwise it loops too much
             
                                             endif;
                                         endwhile;
