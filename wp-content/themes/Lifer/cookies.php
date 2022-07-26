@@ -10,7 +10,7 @@ if (isset($_GET[$cookie])) {
     if (!isset($_COOKIE[$cookie])) {
         setcookie($cookie, $cookie_value, time() + (86400 * 30), "/", COOKIE_DOMAIN);
         //setcookie($cookie, $cookie_value, time() + (86400 * 30), "/");
-        $output =  "1 challenge aangesnomen";
+        $output =  "1 challenge aangenomen";
         $cookie_display_amount = 1;
     } else {
         $cookie_value = $_COOKIE[$cookie] + 1;
@@ -25,3 +25,5 @@ if (isset($_GET[$cookie])) {
     $output =  "0 challenges aangenomen";
     $cookie_display_amount = 0;
 }
+
+?>

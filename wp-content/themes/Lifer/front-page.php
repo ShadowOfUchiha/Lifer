@@ -31,13 +31,13 @@ endif;
 ?>
 
 
-<!-- <body onLoad="<?=$func;?>"> -->
+<body onLoad="<?=$func;?>">
 
-<body onLoad="">
+<!-- <body onLoad=""> -->
 
     <header id="header">
         <div id="header-img">
-
+            
             <!-- outputs a list of languages flags -->
             <ul id="trans_wrapper">
                 <?php pll_the_languages( array( 'display_names_as' => 'slug' ) ); ?>
@@ -105,7 +105,7 @@ endif;
                                 //echo "<div class=\"alert alert-danger\" role=\"alert\">Om een challenge te kunnen accepteren moet u cookies accepteren</div>";
                                 echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><button id=\"homeBtn\" class=\"btn btn-blue\" disabled>Neem challenge aan</button></div>";
                             }else{
-                                echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
+                                echo "<div id=\"btn-div\" class=\"mt-5 text-white\"><a id=\"test\" href=\"?challenge&popup=$theme\"><button id=\"homeBtn\" class=\"btn btn-blue\">Neem challenge aan</button></a></div>";
                             }
                         ?>
 

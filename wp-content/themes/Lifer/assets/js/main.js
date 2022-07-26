@@ -1,7 +1,8 @@
-function change_theme($theme) {
+function change_theme(theme) {
+
     document.getElementById("homeBtn").classList.remove('btn-blue');
 
-    switch ($theme) {
+    switch (theme) {
         case "3":
             $bgColor = "#65ff00";
             $color = "#ff006f";
@@ -148,6 +149,15 @@ btn.onclick = function() {
 var currentUrl = window.location.href;
 
 if (currentUrl.includes("popup")) {
+
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    const urlParams = new URLSearchParams(queryString);
+
+    const popup = urlParams.get('popup')
+    change_theme(popup);
+    
     modal.style.display = "block";
 
     btnDiv = document.getElementById('btn-div');
@@ -190,6 +200,7 @@ if (currentUrl.includes("popup")) {
             countDownDate.setHours(0, 0, 0, 0);
         }
     }, 1000);
+
 }
 
 

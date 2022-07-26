@@ -199,6 +199,6 @@
 	window.AcceptCookie = AcceptCookie;	
 })(window);
 
-window.onload = function() {
+window.addEventListener("load", myInit, true); function myInit(){
 	AcceptCookie = AcceptCookie();
-}
+}; 
